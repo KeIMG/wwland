@@ -25,7 +25,7 @@ function getApplePaySession(url) {
           statusText: xhr.statusText
         });
       };
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.send(JSON.stringify({url: url}));
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("url=" + url);
     });
   }
