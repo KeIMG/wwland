@@ -86,6 +86,7 @@ function applePayButtonClicked() {
 		});
     };*/
     session.onvalidatemerchant = function (event) {
+        logit(event);
         var promise = performValidation(event.validationURL);
         promise.then(function(merchantSession){
             session.completeMerchantValidation(merchantSession);
