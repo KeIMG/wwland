@@ -7,7 +7,7 @@ function getApplePaySession(url) {
     return new Promise(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       console.log(url);
-      xhr.open('GET', 'https://wwland.azurewebsites.net/applepay_includes/apple_pay_conf.php?u=' + url);
+      xhr.open('POST', 'https://wwland.azurewebsites.net/applepay_includes/apple_pay_conf.php');
       xhr.onload = function () {
         if (this.status >= 200 && this.status < 300) {
             console.log(xhr.response);

@@ -1,5 +1,7 @@
 <?php
-$validation_url = $_GET['u'];
+$validation_url = $_POST['url'];
+error_log("line 3");
+error_log($validation_url);
 if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($validation_url, PHP_URL_HOST), -10 )  == ".apple.com" ){
 	require_once ('../applepay_includes/apple_pay_conf.php');
 	
@@ -18,10 +20,13 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	$result = curl_exec($ch);
 	if( $result === false)
 	{
+		error_log("there");
 		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
 	}else
 	{
 		$json = json_decode($result,true);
+		error_log("here");
+		error_log($json);
 		print_r($json);
 
 	}
