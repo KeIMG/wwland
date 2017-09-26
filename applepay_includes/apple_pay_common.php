@@ -15,9 +15,14 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	//curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'rsa_aes_128_gcm_sha_256,ecdhe_rsa_aes_128_gcm_sha_256');
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-	if(curl_exec($ch) === false)
+	$result = curl_exec($ch);
+	if( $result === false)
 	{
 		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
+	}else
+	{
+		json_decode($result,true);
+
 	}
 	// close cURL resource, and free up system resources
 	curl_close($ch);
