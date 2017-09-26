@@ -17,7 +17,7 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 	if(curl_exec($ch) === false)
 	{
-		echo '{"curlError":"' . curl_error($ch) . '"}';
+		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
 	}
 	// close cURL resource, and free up system resources
 	curl_close($ch);
