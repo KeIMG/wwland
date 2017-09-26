@@ -10,6 +10,7 @@ function getApplePaySession(url) {
       xhr.open('GET', 'https://wwland.azurewebsites.net/applepay_includes/apple_pay_conf.php?u=' + url);
       xhr.onload = function () {
         if (this.status >= 200 && this.status < 300) {
+            console.log(xhr.response);
           resolve(JSON.parse(xhr.response));
         } else {
           reject({
