@@ -21,7 +21,8 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
 	}else
 	{
-		json_decode($result,true);
+		$json = json_decode($result,true);
+		print_r($json);
 
 	}
 	// close cURL resource, and free up system resources
