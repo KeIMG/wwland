@@ -77,14 +77,38 @@ function applePayButtonClicked() {
 	* Merchant Validation
 	* We call our merchant session endpoint, passing the URL to use
 	*/
-	session.onvalidatemerchant = (event) => {
+	/*session.onvalidatemerchant = (event) => {
 		console.log("Validate merchant");
 		const validationURL = event.validationURL;
 		getApplePaySession(event.validationURL).then(function(response) {
   			console.log(response);
   			session.completeMerchantValidation(response);
 		});
-	};
+    };*/
+    session.onvalidatemerchant = function (event) {
+        var promise = performValidation(event.validationURL);
+        promise.then(function(merchantSession){
+            session.completeMerchantValidation(merchantSession);
+        });
+    }
+
+    function performValidation(valURL) {
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                var data = JSON.parse(this.responseText);
+                logit(data);
+                resolve(data);
+            };
+            xhr.onerror = reject;
+            xhr.open('GET', 'applepay_includes/apple_pay_comm.php?u=' + valURL);
+            xhr.send();
+        });
+    }
+
+    function logit( data ){
+        console.log(data);
+    }
 
 	/**
 	* Shipping Method Selection

@@ -22,6 +22,9 @@ An example page that displays an Apple Pay button and triggers a payment request
 	</head>
 
 	<body>
+    <?php 
+    require_once('applepay_includes/apple_pay_conf.php');
+    ?>
 		<div class="apple-pay">
 			<h2> Buy with Apple&nbsp;Pay </h2>
 			<p>
