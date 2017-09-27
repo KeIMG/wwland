@@ -17,6 +17,7 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	//curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'rsa_aes_128_gcm_sha_256,ecdhe_rsa_aes_128_gcm_sha_256');
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$result = curl_exec($ch);
 	if( $result === false)
 	{
@@ -24,11 +25,20 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
 	}else
 	{
-		$json = json_decode($result,true);
-		error_log("here");
-		error_log($json);
-		print_r($json);
-
+		header("Content-Type: application/json;charset=utf-8");
+		$json = json_encode($result);
+		if ($json === false) {
+			// Avoid echo of empty string (which is invalid JSON), and
+			// JSONify the error message instead:
+			$json = json_encode(array("jsonError", json_last_error_msg()));
+			if ($json === false) {
+				// This should not happen, but we go all the way now:
+				$json = '{"jsonError": "unknown"}';
+			}
+			// Set HTTP response status code to: 500 - Internal Server Error
+			http_response_code(500);
+		}
+		echo $json;
 	}
 	// close cURL resource, and free up system resources
 	curl_close($ch);

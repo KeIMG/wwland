@@ -10,5 +10,5 @@ define('PRODUCTION_MERCHANTIDENTIFIER', 'merchant.com.winterwonderland.wmeimg');
 define('PRODUCTION_DOMAINNAME', $_SERVER["HTTP_HOST"]); //you can leave this line as-is too, it will take the domain from the server you run it on e.g. shop.mydomain.com or mydomain.com
 // if the line above isn't working for you, replace it with the one below, updating it for your own domain name
 // define('PRODUCTION_DOMAINNAME', 'mydomain.com');
-define('DEBUG', 'true');
+define('PRODUCTION_DISPLAYNAME', 'My Test Shop');
 ?>
