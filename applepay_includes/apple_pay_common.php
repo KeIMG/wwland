@@ -22,7 +22,7 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	if( $result === false)
 	{
 		error_log("there");
-		echo '{\"curlError\":\"' . curl_error($ch) . '\"}';
+		echo '{"curlError":"' . curl_error($ch) . '"}';
 	}else
 	{
 		header("Content-Type: application/json;charset=utf-8");
@@ -42,6 +42,5 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	}
 	// close cURL resource, and free up system resources
 	curl_close($ch);
-	
 }
 ?>
