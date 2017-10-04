@@ -1,7 +1,9 @@
 <?php
 $validation_url = $_POST['url'];
+error_log("line 3");
+error_log($validation_url);
 if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($validation_url, PHP_URL_HOST), -10 )  == ".apple.com" ){
-	require_once ('apple_pay_conf.php');
+	require_once ('../applepay_includes/apple_pay_conf.php');
 	
 	// create a new cURL resource
 	$ch = curl_init();

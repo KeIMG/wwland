@@ -1,7 +1,7 @@
 <?php
 // update these with the real location of your two .pem files. keep them above/outside your webroot folder
-define('PRODUCTION_CERTIFICATE_KEY', 'ApplePay.key.pem');
-define('PRODUCTION_CERTIFICATE_PATH', 'ApplePay.crt.pem');
+define('PRODUCTION_CERTIFICATE_KEY', '../applepay_includes/ApplePay.key.pem');
+define('PRODUCTION_CERTIFICATE_PATH', '../applepay_includes/ApplePay.crt.pem');
 // This is the password you were asked to create in terminal when you extracted ApplePay.key.pem
 define('PRODUCTION_CERTIFICATE_KEY_PASS', '123456'); 
 //define('PRODUCTION_MERCHANTIDENTIFIER', openssl_x509_parse( file_get_contents( PRODUCTION_CERTIFICATE_PATH ))['subject']['UID'] ); //if you have a recent version of PHP, you can leave this line as-is. http://uk.php.net/openssl_x509_parse will parse your certificate and retrieve the relevant line of text from it e.g. merchant.com.name, merchant.com.mydomain or merchant.com.mydomain.shop
@@ -10,8 +10,5 @@ define('PRODUCTION_MERCHANTIDENTIFIER', 'merchant.com.winterwonderland');
 define('PRODUCTION_DOMAINNAME', $_SERVER["HTTP_HOST"]); //you can leave this line as-is too, it will take the domain from the server you run it on e.g. shop.mydomain.com or mydomain.com
 // if the line above isn't working for you, replace it with the one below, updating it for your own domain name
 // define('PRODUCTION_DOMAINNAME', 'mydomain.com');
-
-define('PRODUCTION_CURRENCYCODE', 'GBP');
-define('PRODUCTION_COUNTRYCODE', 'GB');
 define('PRODUCTION_DISPLAYNAME', 'My Test Shop');
 ?>
