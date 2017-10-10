@@ -1,6 +1,3 @@
-<?php 
-    echo "Hello"
-?>
 <!-- 
 Abstract:
 An example page that displays an Apple Pay button and triggers a payment request if clicked
