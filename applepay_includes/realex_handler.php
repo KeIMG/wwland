@@ -12,8 +12,7 @@ use com\realexpayments\remote\sdk\domain\payment\PaymentType;
 use com\realexpayments\remote\sdk\RealexClient;
 
 $token = $_POST['paymentToken'];
-echo '{"token":"' . $token . '"}';
-/*
+
 $applePayRequest = (new PaymentRequest())
         ->addType(PaymentType::AUTH_MOBILE)
         ->addMerchantId(PRODUCTION_MERCHANTIDENTIFIER)
@@ -25,17 +24,18 @@ $applePayRequest = (new PaymentRequest())
 $httpConfiguration = new HttpConfiguration();
 $httpConfiguration->setEndpoint("https://api.sandbox.realexpayments.com/epage-remote.cgi");
 $client = new RealexClient("Shared Secret", $httpConfiguration);
-
+$result = "";
 try {
       $paymentResponse = $client->send($applePayRequest);
       $resultCode = $paymentResponse->getResult();
-      return $paymentResponse->getMessage();
+      $result = $paymentResponse->getMessage();
 }
 catch (RealexServerException $e) {
-      return $e->getMessage();
+      $result = $e->getMessage();
 }
 catch (RealexException $e) {
-      return $e->getMessage();
+      $result = $e->getMessage();
 }
-*/
+echo $result;
+
 ?>

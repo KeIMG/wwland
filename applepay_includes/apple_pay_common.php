@@ -24,7 +24,7 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 		echo '{"curlError":"' . curl_error($ch) . '"}';
 	}else
 	{
-		$json = json_encode(json_decode($result,ture));
+		$json = json_encode(json_decode($result,true));
 		if ($json === false) {
 			// Avoid echo of empty string (which is invalid JSON), and
 			// JSONify the error message instead:
