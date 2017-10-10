@@ -1,0 +1,9 @@
+.idea/
+vendor/
+.vagrant/
+composer.phar
+Vagrantfile
+vm-config/
+phpunit.phar
+composer.lock
+adhoc/
