@@ -1,7 +1,7 @@
 <?php
+header("Content-Type: application/json;charset=utf-8");
 $validation_url = $_POST['url'];
-error_log("line 3");
-error_log($validation_url);
+
 if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($validation_url, PHP_URL_HOST), -10 )  == ".apple.com" ){
 	require_once ('../applepay_includes/apple_pay_conf.php');
 	
@@ -21,12 +21,10 @@ if( "https" == parse_url($validation_url, PHP_URL_SCHEME) && substr( parse_url($
 	$result = curl_exec($ch);
 	if( $result === false)
 	{
-		error_log("there");
 		echo '{"curlError":"' . curl_error($ch) . '"}';
 	}else
 	{
-		header("Content-Type: application/json;charset=utf-8");
-		$json = json_encode($result);
+		$json = json_encode(json_decode($result,ture));
 		if ($json === false) {
 			// Avoid echo of empty string (which is invalid JSON), and
 			// JSONify the error message instead:

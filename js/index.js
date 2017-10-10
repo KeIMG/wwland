@@ -81,7 +81,7 @@ function applePayButtonClicked() {
 		console.log("Validate merchant");
 		const validationURL = event.validationURL;
 		getApplePaySession(event.validationURL).then(function(response) {
-  			console.log(response);
+			  console.log(response);
   			session.completeMerchantValidation(response);
 		});
     };
@@ -123,7 +123,7 @@ function applePayButtonClicked() {
 
 		// ...return a status and redirect to a confirmation page
 		session.completePayment(ApplePaySession.STATUS_SUCCESS);
-		window.location.href = "/success.html";
+		window.location.href = "/success.php";
 	}
 
 	// All our handlers are setup - start the Apple Pay payment
