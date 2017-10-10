@@ -119,8 +119,8 @@ function applePayButtonClicked() {
 	session.onpaymentauthorized = (event) => {
 		// Send payment for processing...
 		const payment = event.payment;
-		console.log(payment);
-		postPaymentToken(payment).then(function(response) {
+		console.log(payment.token.paymentData);
+		postPaymentToken(payment.token.paymentData).then(function(response) {
 			console.log(response);
 
 			// ...return a status and redirect to a confirmation page
