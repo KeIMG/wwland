@@ -36,8 +36,8 @@ function showApplePayButton() {
 */
 function applePayButtonClicked() {
 	const paymentRequest = {
-		countryCode: 'US',
-		currencyCode: 'USD',
+		countryCode: 'UK',
+		currencyCode: 'GBP',
 		shippingMethods: [
 			{
 				label: 'Free Shipping',
@@ -125,7 +125,7 @@ function applePayButtonClicked() {
 
 			// ...return a status and redirect to a confirmation page
 			session.completePayment(ApplePaySession.STATUS_SUCCESS);
-			window.location.href = "/success.php";
+			//window.location.href = "/success.php";
 		});
 	}
 
