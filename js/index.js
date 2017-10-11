@@ -36,7 +36,7 @@ function showApplePayButton() {
 */
 function applePayButtonClicked() {
 	const paymentRequest = {
-		countryCode: 'UK',
+		countryCode: 'GB',
 		currencyCode: 'GBP',
 		shippingMethods: [
 			{
