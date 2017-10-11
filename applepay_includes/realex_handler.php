@@ -16,7 +16,7 @@ $token = $_POST['paymentToken'];
 
 $applePayRequest = (new PaymentRequest())
         ->addType(PaymentType::AUTH_MOBILE)
-        ->addMerchantId(PRODUCTION_MERCHANTIDENTIFIER)
+        ->addMerchantId("pwreventstest")
         ->addAccount("remote")
         ->addMobile("apple-pay")
         ->addToken($token)
