@@ -56,6 +56,6 @@ function postPaymentToken(paymentToken)
       });
     };
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("paymentToken=" + paymentToken);
+    xhr.send("paymentToken=" + encodeURIComponent(JSON.stringify(paymentToken)));
   });
 }
