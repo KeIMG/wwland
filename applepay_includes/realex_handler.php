@@ -30,7 +30,7 @@ try {
       $paymentResponse = $client->send($applePayRequest);
       $resultCode = $paymentResponse->getResult();
       $result = $paymentResponse->getMessage();
-      $result = '{"status":"' . $e->getResult() . '","message":"' . $e->getMessage() . '"}';
+      $result = '{"status":"' . $paymentResponse->getResult() . '","message":"' . $paymentResponse->getMessage() . '"}';
 }
 catch (RealexServerException $e) {
     $result = '{"status":"999","message":"' . $e->getMessage() . '"}';
