@@ -121,11 +121,16 @@ function applePayButtonClicked() {
 		const payment = event.payment;
 		console.log(payment.token.paymentData);
 		postPaymentToken(payment.token.paymentData).then(function(response) {
-			console.log(response);
-
-			// ...return a status and redirect to a confirmation page
-			session.completePayment(ApplePaySession.STATUS_SUCCESS);
-			//window.location.href = "/success.php";
+			if (response.status == "00")
+			{
+				// ...return a status and redirect to a confirmation page
+				session.completePayment(ApplePaySession.STATUS_SUCCESS);
+				window.location.href = "/success.php";
+			}
+			else
+			{
+				session.abort();
+			}
 		});
 	}
 
