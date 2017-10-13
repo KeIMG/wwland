@@ -25,17 +25,18 @@ $applePayRequest = (new PaymentRequest())
 $httpConfiguration = new HttpConfiguration();
 $httpConfiguration->setEndpoint("https://api.sandbox.realexpayments.com/epage-remote.cgi");
 $client = new RealexClient("secret", $httpConfiguration);
-$result = '{"RealexHandlerError":"Unknown Error"}';
+$result = '{"status":"999","message":"initial value"}';
 try {
       $paymentResponse = $client->send($applePayRequest);
       $resultCode = $paymentResponse->getResult();
       $result = $paymentResponse->getMessage();
+      $result = '{"status":"' . $e->getResult() . '","message":"' . $e->getMessage() . '"}';
 }
 catch (RealexServerException $e) {
-    $result = '{"RealexServerException":"' . $e->getMessage() . '"}';
+    $result = '{"status":"999","message":"' . $e->getMessage() . '"}';
 }
 catch (RealexException $e) {
-      $result = '{"RealexException":"' . $e->getMessage() . '"}';
+      $result = '{"status":"999","message":"' . $e->getMessage() . '"}';
 }
 echo $result;
 

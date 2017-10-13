@@ -62,7 +62,7 @@ function applePayButtonClicked() {
 
 		total: {
 			label: 'Apple Pay Example',
-			amount: '8.99',
+			amount: '10.00', //Have to pass exactly 10 for realex testing environment
 		},
 
 		supportedNetworks:[ 'amex', 'discover', 'masterCard', 'visa'],
